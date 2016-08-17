@@ -1,209 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <title>Exercise | MDEC Learn &amp; Earn Program</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
   <style type="text/css">
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* BROWSER */
-    .browser {
-      background: #dedee0;
-      border-bottom: 4px solid #cbcbcb;
-      min-height: 50px;
-      text-align: center;
-    }
-    .browser ul, .browser ul>li {
-      margin: 0;
-      padding: 0;
-    }
-    .browser ul>li {
-      display: inline-block;
-      border-radius: 4px;
-      height: 32px;
-      margin: 8px 4px;
-    }
-
-    .grey {background: #cccacb;}
-    .white {background: white;}
-    .w32 {width: 32px;}
-    .w64 {width: 64px;}
-    .w128 {width: 128px;}
-    .w320 {width: 320px;}
-
-    /* HEADER */
-    header {
-      padding: 16px;
-      text-align: center;
-    }
-    header div.logo {
-      padding: 0;
-      margin: 24px auto;
-      background: #c3c8cc;
-      height: 64px;
-      width: 64px;
-      border-radius: 50%;
-    }
-    nav, nav>ul, nav>ul>li {
-      margin: 0;
-      padding: 0;
-    }
-    nav>ul>li {
-      margin: 0 16px;
-      background: #cfd3d6;
-      display: inline-block;
-      height: 24px;
-      width: 96px;
-    }
-
-    /* IMAGE SCROLLER */
-    section.jumbotron {
-      padding: 64px 16px;
-      border-top: 4px solid #c4c9cd;
-      border-bottom: 4px solid #c4c9cd;
-      min-height: 100px;
-      background: #dadfe3;
-    }
-    section.jumbotron h1 {
-      margin: 0 auto;
-      margin-bottom: 16px;
-      background: #c3c8cc;
-      height: 24px;
-      width: 256px;
-      border-radius: 4px;
-    }
-    section.jumbotron h2 {
-      margin: 0 auto;
-      margin-bottom: 8px;
-      background: #d1d2d4;
-      height: 16px;
-      width: 320px;
-    }
-
-    /* PRODUCT GALLERY */
-    section.gallery {
-      min-height: 100px;
-      text-align: center;
-    }
-    div.container {
-      margin: 0 auto;
-    }
-    section.gallery ul, section.gallery li {
-      margin: 0;
-      padding: 0;
-    }
-    section.gallery li {
-      padding: 16px;
-      display: inline-block;
-      width: 200px;
-    }
-    section.gallery ul>li>div {
-      background: #c3c8cc;
-      height: 128px;
-      margin: 0 0 16px;
-      border-radius: 4px;
-    }
-    section.gallery ul>li>h2 {
-      background: #adb2b8;
-      height: 24px;
-      width: 75%;
-      margin: 0 0 16px;
-    }
-    section.gallery ul>li>p {
-      background: #cfd3d4;
-      height: 8px;
-      margin: 0 0 8px;
-    }
+    body {font-family: sans-serif;}
+    h1,h2,h3,h4,h5,h6 {font-weight: 700;}
+    header h1 {font-size: 72px; letter-spacing: -2px;}
+    .bg-silver {background-color: #EEE;}
+    .pad32 {padding: 32px;}
+    .borrad5 {border-radius: 5px;}
   </style>
-  <!--link rel="stylesheet" type="text/css" href="style.css"-->
-  <title>E-Rezeki Learn &amp; Earn CSS Exercise</title>
-</head>
-<body>
+  <body>
 
-  <!-- Browser Menu -->
-  <div class="browser">
-    <ul>
-      <li class="grey w64"></li>
-      <li class="grey w32"></li>
-      <li class="grey w32"></li>
-      <li class="grey w32"></li>
-      <li class="white w320"></li>
-      <li class="white w128"></li>
-    </ul>
-  </div>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!--
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        -->
+        <a class="navbar-brand" href="#">Izrul Aimin</a>
+      </div>
+      <!--
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+      -->
+    </div>
+  </nav>
 
-  <!-- Navigation -->
-  <header>
-    <!-- Logo -->
-    <div class="logo"></div>
-    <!-- Links -->
-    <nav>
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </nav>
+  <header class="container">
+    <div class="jumbotron">
+      <h1 class="text-capitalize">Tests &amp; Exercises</h1>
+      <p>By Mr. Dudy from CodersTrust</p>
+    </div>
   </header>
 
-  <!-- Image Scroller -->
-  <section class="jumbotron">
-    <h1></h1>
-    <h2></h2>
-    <h2></h2>
-  </section>
-
-  <!-- Product Gallery -->
-  <section class="gallery">
-    <div class="container">
-      <ul>
-        <li>
-          <div></div>
-          <h2></h2>
-          <p></p>
-          <p></p>
-        </li>
-        <li>
-          <div></div>
-          <h2></h2>
-          <p></p>
-          <p></p>
-        </li>
-        <li>
-          <div></div>
-          <h2></h2>
-          <p></p>
-          <p></p>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <div></div>
-          <h2></h2>
-          <p></p>
-          <p></p>
-        </li>
-        <li>
-          <div></div>
-          <h2></h2>
-          <p></p>
-          <p></p>
-        </li>
-        <li>
-          <div></div>
-          <h2></h2>
-          <p></p>
-          <p></p>
-        </li>
-      </ul>
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+        <h2 style="margin-bottom:32px;">Test 1 <br><small>10th August 2016</small></h2>
+        <p class="text-muted"><em>HTML &amp; CSS</em></p>
+        <hr>
+        <a href="20160810.html" target="_blank" class="btn btn-primary" role="button">View</a>
+      </div>
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+        <h2 style="margin-bottom:32px;">Exercise 1 <br><small>14th August 2016</small></h2>
+        <p class="text-muted"><em>HTML &amp; CSS</em></p>
+        <hr>
+        <a href="20160814.html" target="_blank" class="btn btn-primary" role="button">View</a>
+      </div>
     </div>
   </section>
 
-</body>
+  </body>
 </html>
