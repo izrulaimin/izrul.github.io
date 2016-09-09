@@ -113,7 +113,7 @@ h2 {
   background: white;
   overflow: auto;
   padding: 10px 15px;
-  margin-top: 10px 0 0 10px;
+  margin: 10px 0 0 10px;
 }
 
 footer {
@@ -130,3 +130,146 @@ footer p {
   padding: 10px 0 0 0;
   text-align: center;
 }
+
+/* Big Tablet View */
+@media only screen and (min-width:768px) and (max-width:960px){
+
+  #container {width: 95%;}
+
+  .main-header img#logo {
+    margin: auto;
+    display: block;
+    width: 65%;
+  }
+
+  #content {
+    width: 100%;
+    float: none;
+  }
+
+  #sidebar {
+    width: 100%;
+    float: none;
+  }
+
+  #sidebar .block {
+    margin-left: 0;
+  }
+
+}/* End of Big Tablet View */
+
+/* Small Tablet View */
+@media only screen and (min-width:569px) and (max-width:767px){
+
+  #container {width: 95%;}
+
+  .main-header .main-nav {
+    height: auto;
+    display: block;
+    overflow: hidden;
+    width: 99%;
+  }
+
+  .main-header .main-nav ul {
+    padding: 2% 1%;
+    text-align: center;
+    width: 98%;
+  }
+
+  .main-header .main-nav li {
+    float: none;
+    display: block;
+    margin-right: 0;
+    width: 100%;
+    border-bottom: 1px solid #A3293B;
+  }
+
+  .main-header .main-nav li a {
+    margin-bottom: 2px;
+    text-align: center;
+  }
+
+  .main-header .main-nav li a:hover,
+  .main-header .main-nav li a.active {
+    display: block;
+  }
+
+  .main-header img#logo {
+    margin: auto;
+    display: block;
+    width: 65%;
+  }
+
+  #content {
+    width: 100%;
+    float: none;
+  }
+
+  #sidebar {
+    width: 100%;
+    float: none;
+  }
+
+  #sidebar .block {
+    margin-left: 0;
+  }
+
+}/* End of Small Tablet View */
+
+/* Smartphones View */
+@media only screen and (min-width:240px) and (max-width:568px){
+
+  #container {width: 95%;}
+
+  .main-header .main-nav {
+    height: auto;
+    display: block;
+    overflow: hidden;
+    width: 99%;
+  }
+
+  .main-header img#logo {
+    margin: auto;
+    display: block;
+    width: 95%;
+  }
+
+  .main-header .main-nav ul {
+    padding: 2% 1%;
+    text-align: center;
+    width: 98%;
+  }
+
+  .main-header .main-nav li {
+    float: none;
+    display: block;
+    margin-right: 0;
+    width: 100%;
+    border-bottom: 1px solid #A3293B;
+  }
+
+  .main-header .main-nav li a {
+    margin-bottom: 2px;
+    text-align: center;
+  }
+
+  .main-header .main-nav li a:hover,
+  .main-header .main-nav li a.active {
+    display: block;
+  }
+
+  #content {
+    width: 100%;
+    float: none;
+  }
+
+  #sidebar {
+    width: 100%;
+    float: none;
+  }
+
+  #sidebar .block {
+    margin-left: 0;
+  }
+
+}/* End of Smartphones View */
