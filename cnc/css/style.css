@@ -1,3 +1,7 @@
+.pad-top-10 {padding-top: 10px;}
+.pad-top-20 {padding-top: 20px;}
+.pad-top-30 {padding-top: 30px;}
+
 .top-bar {
   height: 5px;
   background: #CA2129;
@@ -35,4 +39,57 @@
 
 .jumbotron h1 {
   font-size: 34px;
+}
+
+.bluebox {
+  background: #2E98CC;
+  overflow: hidden;
+  height: 230px;
+  color: white;
+  padding: 0 10px;
+  font-size: 120%;
+}
+
+.bluebox a.readmore {
+  position: absolute;
+  bottom: 15px;
+  left: 30px;
+  background: #2B8CBC;
+  padding: 10px 15px;
+  color: white;
+}
+
+.bluebox a.readmore:hover {
+  background: #20749D;
+}
+
+.redbox {
+  background: #CA2129;
+  overflow: hidden;
+  height: 230px;
+  color: white;
+  padding: 0 10px;
+  font-size: 120%;
+}
+
+.redbox a.readmore {
+  position: absolute;
+  bottom: 15px;
+  left: 30px;
+  background: #BF1E26;
+  padding: 10px 15px;
+  color: white;
+}
+
+.redbox a.readmore:hover {
+  background: #86161B;
+}
+
+.media-body {
+  font-size: 120%;
+}
+
+.panel-primary > .panel-heading {
+  background: #2E98CC !important;
+  color: white;
 }
