@@ -89,7 +89,7 @@
   font-size: 120%;
 }
 
-.panel-primary > .panel-heading {
+.panel-default > .panel-heading {
   background: #2E98CC !important;
   color: white;
 }
