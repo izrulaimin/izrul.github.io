@@ -23,10 +23,10 @@
     <![endif]-->
   </head>
   <body>
-    <!-- TOP BAR -->
-    <div class="top-bar"></div>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <!-- TOP BAR -->
+      <div class="top-bar"></div><!-- End of TOP BAR -->
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -60,8 +60,8 @@
           </ul><!-- End of NAVBAR LEFT -->
           <!-- NAVBAR RIGHT -->
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
+            <li class="login"><a href="#">Login</a></li>
+            <li class="register"><a href="#">Register</a></li>
           </ul>
           <!-- Instead of adding the <form> as a child of <ul>, I've added it as a sibling to <ul> and change the class navbar-left to navbar-right -->
           <form class="navbar-form navbar-right">
@@ -98,21 +98,21 @@
       <div class="row">
         <div class="col-md-4">
           <div class="bluebox">
-            <h3>Learn ...</h3>
+            <h3><span class="glyphicon glyphicon-book"></span> Learn ...</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet finibus ultrices. Morbi eget mollis augue. Nulla dignissim neque non metus ultrices porta.</p>
             <a class="readmore" href="#">Read More</a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="redbox">
-            <h3>Learn ...</h3>
+            <h3><span class="glyphicon glyphicon-eye-open"></span> Create ...</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet finibus ultrices. Morbi eget mollis augue. Nulla dignissim neque non metus ultrices porta.</p>
             <a class="readmore" href="#">Read More</a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="bluebox">
-            <h3>Learn ...</h3>
+            <h3><span class="glyphicon glyphicon-road"></span> Teach ...</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet finibus ultrices. Morbi eget mollis augue. Nulla dignissim neque non metus ultrices porta.</p>
             <a class="readmore" href="#">Read More</a>
           </div>
@@ -164,12 +164,44 @@
           </div>
         </div>
         <!-- Side Bar -->
-        <div class="col-md-4"></div><!-- End of Side Bar -->
+        <div class="col-md-4">
+          <!-- Side Bar 1 -->
+          <div class="list-group">
+            <a href="#" class="list-group-item active">Home</a>
+            <a href="#" class="list-group-item">About</a>
+            <a href="#" class="list-group-item">Innovate</a>
+            <a href="#" class="list-group-item">Blog</a>
+            <a href="#" class="list-group-item">Contact Us</a>
+          </div><!-- End of Side Bar 1 -->
+          <!-- Side Bar 2 -->
+          <div class="list-group grey-list">
+            <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading">List group item heading</h4>
+              <p class="list-group-item-text">
+                Maecenas et ante lacinia diam sodales rhoncus vitae sed orci. Nam ac arcu sit amet sapien finibus iaculis in nec ligula. Suspendisse quis nisi sed justo semper vestibulum.
+              </p>
+            </a>
+            <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading">List group item heading</h4>
+              <p class="list-group-item-text">
+                Maecenas et ante lacinia diam sodales rhoncus vitae sed orci. Nam ac arcu sit amet sapien finibus iaculis in nec ligula. Suspendisse quis nisi sed justo semper vestibulum.
+              </p>
+            </a>
+            <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading">List group item heading</h4>
+              <p class="list-group-item-text">
+                Maecenas et ante lacinia diam sodales rhoncus vitae sed orci. Nam ac arcu sit amet sapien finibus iaculis in nec ligula. Suspendisse quis nisi sed justo semper vestibulum.
+              </p>
+            </a>
+          </div><!-- End of Side Bar 2 -->
+        </div><!-- End of Side Bar -->
       </div>
       <!-- End of SECOND ROW -->
 
-    </div>
-    <!-- End of CONTENT -->
+    </div><!-- End of CONTENT -->
+
+    <!-- FOOTER -->
+    <footer>Copyright &copy; 2016, Clean &amp; Clear</footer><!-- End of FOOTER -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script-->

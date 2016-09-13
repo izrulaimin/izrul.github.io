@@ -1,3 +1,5 @@
+body {margin-top: 50px;}
+
 .pad-top-10 {padding-top: 10px;}
 .pad-top-20 {padding-top: 20px;}
 .pad-top-30 {padding-top: 30px;}
@@ -14,6 +16,32 @@
 
 .navbar li:hover {
   background: #E7E7E7;
+}
+
+li.login a {
+  background: #CA2129;
+  margin-bottom: -10px !important;
+  color: white !important;
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+li.login a:hover,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background: #CCC;
+}
+
+li.register a {
+  background: #2F98CC;
+  margin-bottom: -10px !important;
+  color: white !important;
+}
+
+li.register a:hover,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background: #CCC;
 }
 
 .jumbotron {
@@ -92,4 +120,24 @@
 .panel-default > .panel-heading {
   background: #2E98CC !important;
   color: white;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  background: #CA2129;
+  border: #CA2129;
+}
+
+.grey-list .list-group-item.active,
+.grey-list .list-group-item.active:hover,
+.grey-list .list-group-item.active:focus {
+  background: #F4F4F4;
+  border: #CCC;
+  color: #666;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  font-weight: bold;
+  background: #F4F4F4;
 }
