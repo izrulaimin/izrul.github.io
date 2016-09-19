@@ -15,6 +15,13 @@
     <!-- Bootstrap JS -->
     <script src="js/bootstrap.js"></script>
 
+    <script>
+      $(document).ready(function(){
+        $('#tooltip1').tooltip('hide');
+        $('#tooltip2').tooltip('hide');
+      });
+    </script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,18 +52,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <!-- NAVBAR LEFT -->
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">About</a></li>
+            <li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="about.html">About</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Innovate <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Learn</a></li>
-                <li><a href="#">Create</a></li>
-                <li><a href="#">Teach</a></li>
+                <li><a href="innovate.html">Learn</a></li>
+                <li><a href="innovate.html">Create</a></li>
+                <li><a href="innovate.html">Teach</a></li>
               </ul>
             </li>
-            <li><a href="">Blog</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul><!-- End of NAVBAR LEFT -->
           <!-- NAVBAR RIGHT -->
           <ul class="nav navbar-nav navbar-right">
@@ -99,14 +106,14 @@
         <div class="col-md-4">
           <div class="bluebox">
             <h3><span class="glyphicon glyphicon-book"></span> Learn ...</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet finibus ultrices. Morbi eget mollis augue. Nulla dignissim neque non metus ultrices porta.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href="#" id="tooltip1" data-toggle="tooltip" title="This is the first tooltip">Etiam imperdiet</a> finibus ultrices. Morbi eget mollis augue. Nulla dignissim neque non metus ultrices porta.</p>
             <a class="readmore" href="#">Read More</a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="redbox">
             <h3><span class="glyphicon glyphicon-eye-open"></span> Create ...</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet finibus ultrices. Morbi eget mollis augue. Nulla dignissim neque non metus ultrices porta.</p>
+            <p>Lorem ipsum dolor sit amet, <a href="#" id="tooltip2" data-toggle="tooltip" title="This is another tooltip">consectetur adipiscing elit</a>. Etiam imperdiet finibus ultrices. Morbi eget mollis augue. Nulla dignissim neque non metus ultrices porta.</p>
             <a class="readmore" href="#">Read More</a>
           </div>
         </div>
