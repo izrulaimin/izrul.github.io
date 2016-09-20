@@ -84,6 +84,29 @@ Main components
   }
 }
 
+main.cd-main-content > section {
+  padding: 30px;
+  text-align: center;
+}
+
+main.cd-main-content > section > a {
+  font-size: 48px;
+  font-weight: bold;
+  display: block;
+  padding: 20px;
+  vertical-align: middle;
+  transition: 0.25s;
+}
+
+main.cd-main-content > section > a.active {
+  background: #CCC;
+}
+
+main.cd-main-content > section > a:hover {
+  font-size: 50px;
+  background: #FFCC00;
+}
+
 header {
   position: absolute;
   top: 0;
