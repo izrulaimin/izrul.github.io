@@ -1,46 +1,975 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Izrul Aimin | Github</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Household Bookkeeping</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Define custom body background colors for themes */
+        :root {
+            --custom-body-bg-light: #e9ecef; /* Darker grey for light theme background */
+            --custom-body-bg-dark: #1b2027;  /* Darker shade for dark theme background */
+        }
+
+        /* Apply custom body background based on theme attribute */
+        [data-bs-theme="light"] body {
+            background-color: var(--custom-body-bg-light);
+        }
+
+        [data-bs-theme="dark"] body {
+            background-color: var(--custom-body-bg-dark);
+        }
+
+        /* Custom styles for dark/light mode table (remains as is) */
+        [data-bs-theme="dark"] .table {
+            --bs-table-color: #dee2e6; /* Light text */
+            --bs-table-bg: #212529;   /* Dark background */
+            --bs-table-border-color: #32383e; /* Border color */
+            --bs-table-hover-bg: #313539; /* Hover background */
+        }
+
+         /* Style for the file input button */
+        .file-upload-button {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .file-upload-button input[type="file"] {
+            display: none; /* Hide the actual file input */
+        }
+
+        /* Style for sortable headers */
+        .sortable-header {
+            cursor: pointer;
+        }
+
+        .sortable-header:hover {
+             text-decoration: underline;
+        }
+
+         /* Style for clickable description cells */
+        .clickable-description {
+            cursor: pointer;
+            text-decoration: underline; /* Indicate clickability */
+        }
+
+        /* Initially hide the action links container using visibility */
+        #transactionActionLinks { /* Renamed container */
+            visibility: hidden; /* Links are hidden by default */
+             /* Add space but keep hidden */
+             min-height: 2rem; /* Reserve some space so layout doesn't jump */
+             padding-top: 0.5rem; /* Match mt-3 spacing */
+        }
+        /* When visible, ensure it takes up space */
+        #transactionActionLinks[style*="visibility: visible"] {
+             min-height: auto;
+        }
+
+
+        /* Adjust button width and form controls on smaller screens */
+         @media (max-width: 767.98px) { /* Adjusted breakpoint slightly for form elements */
+            .btn { /* General button styling */
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            .btn:last-child {
+                 margin-bottom: 0;
+            }
+             /* Ensure form row uses flex wrap */
+            #transactionForm .row {
+                 flex-wrap: wrap;
+            }
+
+            /* Adjust spacing and width for form controls within the row */
+            #transactionForm .row > div {
+                flex: 1 1 100%; /* Each column takes full width */
+                margin-bottom: 0.75rem; /* Add space below each input/select */
+            }
+
+            #transactionForm .row > div:last-child {
+                 margin-bottom: 0; /* No bottom margin on the last element */
+            }
+
+             /* Specific adjustment for the Amount input group */
+             #transactionForm .row .col-md-2:nth-child(3) { /* Selects the 3rd col-md-2 (Amount) */
+                 flex: 1 1 100%; /* Take full width */
+             }
+
+             /* Ensure button group wraps on small screens */
+             .btn-group {
+                width: 100%;
+                flex-wrap: wrap;
+             }
+             .btn-group > .btn {
+                 flex: 1 1 auto; /* Allow buttons to grow, take full width if needed */
+                 margin-bottom: 0.5rem;
+             }
+             .btn-group > .btn:not(:last-child) {
+                 margin-right: 0.5rem; /* Add spacing between buttons in wrapped state */
+             }
+
+             /* Adjust delete/duplicate links (styled as buttons) on small screens */
+             #transactionActionLinks {
+                 flex-direction: column; /* Stack links vertically */
+                 align-items: flex-start; /* Align stacked links to the left */
+                 gap: 0.5rem; /* Space between stacked links */
+             }
+             #transactionActionLinks .btn { /* Also target <a> tags styled as buttons */
+                 width: 100%; /* Make stacked links take full width */
+             }
+         }
+
+         /* Small adjustment for Amount/Type/Add alignment on medium screens */
+         @media (min-width: 768px) and (max-width: 991.98px) {
+             #transactionForm .row .col-md-2,
+             #transactionForm .row .col-md-1 {
+                 flex: 1 1 auto; /* Allow them to shrink/grow based on content */
+             }
+         }
+    </style>
 </head>
 <body>
-  <div class="main-block">
-    <div class="avatar-image"></div>
-    <h1 class="name-header">Izrulaimin bin Jasman</h1>
-    <h2 class="sub-header">Shah Alam, Selangor, Malaysia</h2>
-    <p class="full-info">I am a Creative Multimedia student at Multimedia University, Cyberjaya. I am a UI/UX Designer from Selangor, Malaysia. I love to self develop myself by learning new technical and softskills online, be it from Youtube or online learning websites.</p>
-    <h3 class="info-header">Education</h3>
-    <ul class="list-info">
-      <li>Multimedia University, Cyberjaya</li>
-    </ul>
-    <h3 class="info-header">Work Experience</h3>
-      <ul class="list-info">
-        <li>Multimedia Designer at JP Performance Motorsport Sdn Bhd</li>
-        <li>Multimedia Designer at AETINS Sdn Bhd</li>
-      </ul>
-      <ul class="socials">
-        <li>
-          <a class="social-image" href="https://www.facebook.com/izrul.aimin">
-            <img src="img/icons/face book.png"/>
-          </a>
-        </li>
-        <li>
-          <a class="social-image" href="https://my.linkedin.com/in/izrul-aimin-jasman-182039b2">
-            <img src="img/icons/linked in.png" />
-          </a>
-        </li>
-        <li>
-          <a class="social-image" href="https://www.youtube.com/channel/UCbKf27KwuTgl08St4p9bkTA">
-            <img src="img/icons/youtube.png" />
-          </a>
-        </li>
-      </ul>
-  </div>
-  <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
+    <div class="container mt-4 mb-4">
+
+        <h1 class="mb-4">Household Bookkeeping</h1>
+
+        <!-- Controls: Theme, Currency -->
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+            <div class="mb-2 mb-sm-0">
+                 <label for="currencySelect" class="form-label me-2 d-inline-block">Currency:</label>
+                <select id="currencySelect" class="form-select d-inline-block w-auto">
+                    <option value="MYR" selected>MYR</option>
+                    <option value="USD">USD</option>
+                    <option value="GBP">GBP</option>
+                    <option value="EUR">EUR</option>
+                </select>
+            </div>
+            <div>
+                <button id="themeToggle" class="btn btn-secondary">Switch to Light Theme</button>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Summary
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        Total Income: <strong id="totalIncome"></strong>
+                    </div>
+                     <div class="col-md-4">
+                        Total Expense: <strong id="totalExpense"></strong>
+                    </div>
+                    <div class="col-md-4">
+                        Balance: <strong id="balance"></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add New Transaction Form -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Add New Transaction
+            </div>
+            <div class="card-body">
+                <form id="transactionForm">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="amount" class="form-label">Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="currencySymbol">RM</span>
+                                <input type="text" class="form-control" id="amount" required>
+                            </div>
+                        </div>
+                         <div class="col-md-2">
+                            <label for="type" class="form-label">Type</label>
+                            <select id="type" class="form-select" required>
+                                <option value="expense">Expense</option>
+                                <option value="income">Income</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary w-100">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Transactions List -->
+        <div class="card mb-4">
+             <div class="card-header d-flex justify-content-between align-items-center">
+                Transactions
+                 <div class="btn-group" role="group" aria-label="File operations">
+                    <button id="downloadCsvBtn" class="btn btn-sm btn-outline-secondary">Download CSV</button>
+                    <button id="downloadXlsxBtn" class="btn btn-sm btn-outline-secondary">Download XLSX</button>
+                    <label class="btn btn-sm btn-outline-secondary file-upload-button">
+                        Upload File
+                         <input type="file" id="uploadFile" accept=".csv, .xlsx">
+                    </label>
+                    <button type="button" class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#uploadGuidanceModal">
+                       Upload Help
+                    </button>
+                 </div>
+             </div>
+            <div class="card-body">
+                 <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="form-check-input" id="selectAllCheckbox"></th> <!-- Checkbox Column Added Back -->
+                                <th class="sortable-header" data-sort-column="date">Date <span id="dateSortIcon"></span></th>
+                                <th>Description</th>
+                                <th class="sortable-header" data-sort-column="amount">Amount <span id="amountSortIcon"></span></th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                            <tr>
+                                <td colspan="5" class="text-center">No transactions yet. Add one above!</td> <!-- Colspan is 5 -->
+                            </tr>
+                        </tbody>
+                    </table>
+                 </div>
+                 <!-- Container for Delete & Duplicate Selected Links - Grouped on Left, hidden by default -->
+                 <!-- Used d-flex and gap-2 for layout, visibility: hidden in CSS handles hiding -->
+                 <div id="transactionActionLinks" class="mt-3 d-flex gap-2">
+                    <a href="#" id="deleteSelectedLink" class="btn btn-secondary">Delete Selected</a> <!-- Changed to btn-secondary -->
+                    <a href="#" id="duplicateSelectedLink" class="btn btn-secondary">Duplicate Selected</a> <!-- Changed to btn-secondary -->
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Guidance Modal -->
+    <div class="modal fade" id="uploadGuidanceModal" tabindex="-1" aria-labelledby="uploadGuidanceModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="uploadGuidanceModalLabel">Upload File Format Guidance</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>To successfully upload your transactions from a CSV or XLSX file, please ensure your file has the following columns with these exact headers:</p>
+            <ul>
+              <li><strong>Date</strong>: The date of the transaction. Use a format like <code>YYYY-MM-DD</code> (e.g., 2023-10-27).</li>
+              <li><strong>Description</strong>: A brief description of the transaction (text).</li>
+              <li><strong>Amount</strong>: The amount of the transaction (number, e.g., 50.75).</li>
+              <li><strong>Type</strong>: The type of transaction. Must be either <code>income</code> or <code>expense</code> (case-insensitive).</li>
+            </ul>
+             <p>Make sure the first row contains these headers exactly as written above. Any other columns will be ignored.</p>
+             <p>Example CSV:</p>
+             <pre>Date,Description,Amount,Type
+2023-10-26,Salary,2500.00,income
+2023-10-27,Groceries,120.50,expense
+2023-10-27,Internet Bill,80.00,expense</pre>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got It</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteConfirmModalLabel">Confirm Deletion</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete <strong id="deleteCount">0</strong> selected transaction(s)?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Import Status Modal -->
+    <div class="modal fade" id="importStatusModal" tabindex="-1" aria-labelledby="importStatusModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="importStatusModalLabel">Import Status</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="importStatusBody">
+            <!-- Message will be inserted here -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Transaction Modal -->
+    <div class="modal fade" id="editTransactionModal" tabindex="-1" aria-labelledby="editTransactionModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editTransactionModalLabel">Edit Transaction</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="editTransactionForm">
+                  <input type="hidden" id="editTransactionId"> <!-- Hidden field to store ID -->
+                  <div class="mb-3">
+                    <label for="editDate" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="editDate" required>
+                  </div>
+                   <div class="mb-3">
+                    <label for="editDescription" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="editDescription" required>
+                  </div>
+                   <div class="mb-3">
+                    <label for="editAmount" class="form-label">Amount</label>
+                     <div class="input-group">
+                         <span class="input-group-text" id="editCurrencySymbol">RM</span> <!-- Currency symbol span for edit modal -->
+                         <input type="text" class="form-control" id="editAmount" required> <!-- Keep as type="text" for formatting -->
+                     </div>
+                  </div>
+                   <div class="mb-3">
+                    <label for="editType" class="form-label">Type</label>
+                    <select id="editType" class="form-select" required>
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="saveEditBtn">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright Footer -->
+    <footer class="mt-4 py-3 text-center text-muted">
+        © 2024 iMean Designs
+    </footer>
+
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SheetJS (xlsx) for Excel/CSV parsing/writing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- FileSaver.js for saving files -->
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+
+    <script>
+        // --- DOM Elements ---
+        const themeToggle = document.getElementById('themeToggle');
+        const currencySelect = document.getElementById('currencySelect');
+        const transactionForm = document.getElementById('transactionForm');
+        const transactionTableBody = document.getElementById('transactionTableBody');
+        const totalIncomeSpan = document.getElementById('totalIncome');
+        const totalExpenseSpan = document.getElementById('totalExpense');
+        const balanceSpan = document.getElementById('balance');
+        const downloadCsvBtn = document.getElementById('downloadCsvBtn');
+        const downloadXlsxBtn = document.getElementById('downloadXlsxBtn');
+        const uploadFile = document.getElementById('uploadFile');
+        const sortableHeaders = document.querySelectorAll('.sortable-header');
+        const dateSortIcon = document.getElementById('dateSortIcon');
+        const amountSortIcon = document.getElementById('amountSortIcon');
+
+        // Action Links Container
+        const transactionActionLinks = document.getElementById('transactionActionLinks'); // Renamed
+        const deleteSelectedLink = document.getElementById('deleteSelectedLink'); // Link instead of button
+        const duplicateSelectedLink = document.getElementById('duplicateSelectedLink'); // Link instead of button
+
+        // Delete Confirmation Modal Elements
+        const deleteConfirmModalElement = document.getElementById('deleteConfirmModal');
+        const deleteConfirmModal = new bootstrap.Modal(deleteConfirmModalElement);
+        const deleteCountSpan = document.getElementById('deleteCount');
+        const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+
+        // Import Status Modal Elements
+        const importStatusModalElement = document.getElementById('importStatusModal');
+        const importStatusModal = new bootstrap.Modal(importStatusModalElement);
+        const importStatusBody = document.getElementById('importStatusBody');
+
+        // Edit Transaction Modal Elements
+        const editTransactionModalElement = document.getElementById('editTransactionModal');
+        const editTransactionModal = new bootstrap.Modal(editTransactionModalElement);
+        const editTransactionForm = document.getElementById('editTransactionForm');
+        const editTransactionIdInput = document.getElementById('editTransactionId');
+        const editDateInput = document.getElementById('editDate');
+        const editDescriptionInput = document.getElementById('editDescription');
+        const editAmountInput = document.getElementById('editAmount');
+        const editCurrencySymbolSpan = document.getElementById('editCurrencySymbol'); // New currency symbol span for edit modal
+        const editTypeSelect = document.getElementById('editType');
+        const saveEditBtn = document.getElementById('saveEditBtn');
+
+
+        // Amount Input and Currency Symbol Span (Add form)
+        const amountInput = document.getElementById('amount');
+        const currencySymbolSpan = document.getElementById('currencySymbol');
+
+        // Select All Checkbox Element
+        const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+
+
+        // --- State ---
+        let transactions = [];
+        let idsToDeleteOnConfirm = []; // Used for delete modal
+        let editingTransactionId = null; // Used for edit modal
+
+        const STORAGE_KEY = 'bookkeepingData';
+        const THEME_STORAGE_KEY = 'bookkeepingTheme';
+        const CURRENCY_STORAGE_KEY = 'bookkeepingCurrency';
+        const SORT_STORAGE_KEY = 'bookkeepingSort';
+        let currentSortColumn = 'date';
+        let currentSortOrder = 'desc';
+        const currencySymbols = { MYR: 'RM', USD: '$', GBP: '£', EUR: '€' };
+
+        // --- Local Storage ---
+        function loadData() {
+            const data = localStorage.getItem(STORAGE_KEY);
+            transactions = data ? JSON.parse(data) : [];
+        }
+        function saveData() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+        }
+        function loadTheme() {
+            setTheme(localStorage.getItem(THEME_STORAGE_KEY) || 'dark');
+        }
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            themeToggle.textContent = theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme';
+            localStorage.setItem(THEME_STORAGE_KEY, theme);
+        }
+        function loadCurrency() {
+            currencySelect.value = localStorage.getItem(CURRENCY_STORAGE_KEY) || 'MYR';
+            updateCurrencySymbolDisplay();
+        }
+        function saveCurrency(currency) {
+            localStorage.setItem(CURRENCY_STORAGE_KEY, currency);
+        }
+        function loadSortState() {
+            const savedSort = localStorage.getItem(SORT_STORAGE_KEY);
+            if (savedSort) {
+                const sortState = JSON.parse(savedSort);
+                currentSortColumn = sortState.column || 'date';
+                currentSortOrder = sortState.order || 'desc';
+            }
+        }
+        function saveSortState() {
+            localStorage.setItem(SORT_STORAGE_KEY, JSON.stringify({ column: currentSortColumn, order: currentSortOrder }));
+        }
+
+        // --- Currency & Formatting ---
+        function getCurrentCurrency() {
+            return currencySelect.value || 'MYR';
+        }
+        function formatCurrencyForDisplay(amount) {
+            const currency = getCurrentCurrency();
+            const symbol = currencySymbols[currency] || '';
+            const numericAmount = parseFloat(amount) || 0;
+            return `${symbol} ${numericAmount.toFixed(2)}`;
+        }
+        function updateCurrencySymbolDisplay() {
+            const symbol = currencySymbols[getCurrentCurrency()] || '';
+            currencySymbolSpan.textContent = symbol; // For add form
+            editCurrencySymbolSpan.textContent = symbol; // For edit modal
+        }
+        function formatAmountInput(inputElement) {
+            let value = inputElement.value.replace(/\D/g, '');
+            if (value === '') {
+                inputElement.value = '';
+                return;
+            }
+            while (value.length < 3) value = '0' + value;
+            const integerPart = value.slice(0, -2);
+            const decimalPart = value.slice(-2);
+            inputElement.value = parseFloat(integerPart).toString() + '.' + decimalPart;
+        }
+
+        // --- Rendering & UI Updates ---
+        function renderTransactions() {
+            transactionTableBody.innerHTML = '';
+            // Manage disabled state for the select all checkbox
+            selectAllCheckbox.disabled = transactions.length === 0;
+             // Reset select all checkbox state regardless of transactions exist or not
+             selectAllCheckbox.checked = false;
+             selectAllCheckbox.indeterminate = false;
+
+            if (transactions.length === 0) {
+                // Colspan is 5 because the checkbox column is back
+                transactionTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No transactions yet. Add one above!</td></tr>';
+            } else {
+                const sortedTransactions = [...transactions].sort((a, b) => {
+                    let compare = 0;
+                    if (currentSortColumn === 'date') compare = new Date(a.date) - new Date(b.date);
+                    else if (currentSortColumn === 'amount') compare = a.amount - b.amount;
+                    return currentSortOrder === 'asc' ? compare : -compare;
+                });
+                sortedTransactions.forEach(transaction => {
+                    const row = transactionTableBody.insertRow();
+                    row.setAttribute('data-id', transaction.id);
+                    // Add the checkbox cell back
+                    row.insertCell().innerHTML = `<input type="checkbox" class="form-check-input transaction-checkbox" data-id="${transaction.id}">`;
+
+                    row.insertCell().textContent = transaction.date;
+
+                    const descriptionCell = row.insertCell();
+                    descriptionCell.textContent = transaction.description;
+                    descriptionCell.classList.add('clickable-description'); // Make description clickable
+                    descriptionCell.setAttribute('data-id', transaction.id); // Add ID to the cell too for easier event delegation
+
+
+                    const amountCell = row.insertCell();
+                    amountCell.textContent = formatCurrencyForDisplay(transaction.amount);
+                    amountCell.className = transaction.type === 'income' ? 'text-success' : 'text-danger';
+
+                    row.insertCell().textContent = transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1);
+                });
+            }
+            updateSummary();
+            updateSortIcons();
+             // Call checkSelectedTransactions to update action links visibility based on current state
+            checkSelectedTransactions();
+        }
+        function updateSummary() {
+            let totalIncome = 0, totalExpense = 0;
+            transactions.forEach(t => t.type === 'income' ? totalIncome += t.amount : totalExpense += t.amount);
+            const balance = totalIncome - totalExpense;
+            totalIncomeSpan.textContent = formatCurrencyForDisplay(totalIncome);
+            totalExpenseSpan.textContent = formatCurrencyForDisplay(totalExpense);
+            balanceSpan.textContent = formatCurrencyForDisplay(balance);
+            balanceSpan.className = balance > 0 ? 'text-success' : (balance < 0 ? 'text-danger' : 'text-secondary');
+        }
+        function updateSortIcons() {
+            dateSortIcon.textContent = ''; amountSortIcon.textContent = '';
+            const icon = currentSortOrder === 'asc' ? ' ▲' : ' ▼';
+            if (currentSortColumn === 'date') dateSortIcon.textContent = icon;
+            else if (currentSortColumn === 'amount') amountSortIcon.textContent = icon;
+        }
+        function checkSelectedTransactions() {
+            const checkedCheckboxes = transactionTableBody.querySelectorAll('.transaction-checkbox:checked');
+
+            // Toggle visibility using visibility: hidden
+            if (checkedCheckboxes.length > 0) {
+                 transactionActionLinks.style.visibility = 'visible';
+            } else {
+                 transactionActionLinks.style.visibility = 'hidden';
+            }
+
+            const allCheckboxes = transactionTableBody.querySelectorAll('.transaction-checkbox');
+            if (allCheckboxes.length > 0) {
+                selectAllCheckbox.checked = checkedCheckboxes.length === allCheckboxes.length;
+                selectAllCheckbox.indeterminate = checkedCheckboxes.length > 0 && checkedCheckboxes.length < allCheckboxes.length;
+            } else { // No rows with checkboxes
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = false;
+                 // Although visibility is handled above, ensure consistency if table becomes empty
+                 transactionActionLinks.style.visibility = 'hidden';
+            }
+        }
+        function refreshUI() { renderTransactions(); }
+
+
+        // --- Event Handlers ---
+
+        // Amount input formatting for Add Form
+        amountInput.addEventListener('input', () => formatAmountInput(amountInput));
+        amountInput.addEventListener('blur', () => { formatAmountInput(amountInput); if (amountInput.value === '') amountInput.value = '0.00'; });
+        amountInput.addEventListener('focus', () => amountInput.select());
+
+         // Amount input formatting for Edit Modal
+        editAmountInput.addEventListener('input', () => formatAmountInput(editAmountInput));
+        editAmountInput.addEventListener('blur', () => { formatAmountInput(editAmountInput); if (editAmountInput.value === '') editAmountInput.value = '0.00'; });
+        editAmountInput.addEventListener('focus', () => editAmountInput.select());
+
+
+        transactionForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const date = document.getElementById('date').value;
+            const description = document.getElementById('description').value;
+            const amount = parseFloat(amountInput.value);
+            const type = document.getElementById('type').value;
+            if (!date || !description || isNaN(amount) || amount < 0 || !type) {
+                alert('Please fill in all fields correctly. Amount must be 0 or greater.');
+                if (isNaN(amount) || amountInput.value === '') amountInput.value = '0.00';
+                return;
+            }
+            if (amount === 0 && type === 'expense') {
+                alert('Expense amount must be greater than zero.');
+                return;
+            }
+            transactions.push({ id: Date.now(), date, description, amount, type });
+            saveData();
+            currentSortColumn = 'date'; currentSortOrder = 'desc'; saveSortState();
+            refreshUI(); // Re-render the table including the new row
+            transactionForm.reset(); document.getElementById('date').valueAsDate = new Date(); amountInput.value = '0.00';
+        });
+
+        // Sorting Header Click
+        document.querySelector('.table').addEventListener('click', function(event) {
+            const header = event.target.closest('.sortable-header');
+            if (!header) return;
+            const clickedColumn = header.getAttribute('data-sort-column');
+            if (clickedColumn === currentSortColumn) currentSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc';
+            else { currentSortColumn = clickedColumn; currentSortOrder = (clickedColumn === 'date') ? 'desc' : 'asc'; }
+            saveSortState(); refreshUI();
+        });
+
+        // "Select All" Checkbox Handler
+        selectAllCheckbox.addEventListener('change', function() {
+             const isChecked = selectAllCheckbox.checked;
+             const allCheckboxes = transactionTableBody.querySelectorAll('.transaction-checkbox');
+             allCheckboxes.forEach(checkbox => {
+                 checkbox.checked = isChecked;
+             });
+             checkSelectedTransactions(); // Update action links visibility
+        });
+
+        // Individual Checkbox Handler (uses delegation)
+        transactionTableBody.addEventListener('change', function(event) {
+            if (event.target.classList.contains('transaction-checkbox')) {
+                checkSelectedTransactions(); // Update action links visibility and select-all state
+            }
+        });
+
+        // "Delete Selected" Link Handler
+        deleteSelectedLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            idsToDeleteOnConfirm = Array.from(transactionTableBody.querySelectorAll('.transaction-checkbox:checked')).map(cb => parseInt(cb.getAttribute('data-id')));
+            if (idsToDeleteOnConfirm.length === 0) { alert('No transactions selected.'); return; }
+            deleteCountSpan.textContent = idsToDeleteOnConfirm.length;
+            deleteConfirmModal.show();
+        });
+
+        // Confirmation Modal "Delete" Button Handler
+        confirmDeleteBtn.addEventListener('click', function() {
+            transactions = transactions.filter(t => !idsToDeleteOnConfirm.includes(t.id));
+            saveData(); idsToDeleteOnConfirm = []; deleteConfirmModal.hide(); refreshUI();
+        });
+
+        // "Duplicate Selected" Link Handler
+        duplicateSelectedLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            const checkedCheckboxes = transactionTableBody.querySelectorAll('.transaction-checkbox:checked');
+            const idsToDuplicate = Array.from(checkedCheckboxes).map(cb => parseInt(cb.getAttribute('data-id')));
+
+            if (idsToDuplicate.length === 0) {
+                alert('No transactions selected for duplication.');
+                return;
+            }
+
+            const duplicatedTransactions = [];
+            const today = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+
+            idsToDuplicate.forEach(id => {
+                const originalTransaction = transactions.find(t => t.id === id);
+                if (originalTransaction) {
+                    duplicatedTransactions.push({
+                        ...originalTransaction, // Spread all properties from the original
+                        // Using Date.now() alone for new IDs - ensure uniqueness
+                        // Adding index + current transactions length to reduce collision risk
+                        id: Date.now() + duplicatedTransactions.length + transactions.length,
+                        date: today // Set date to today's date
+                    });
+                }
+            });
+
+            if (duplicatedTransactions.length > 0) {
+                transactions = transactions.concat(duplicatedTransactions);
+                saveData();
+                currentSortColumn = 'date'; currentSortOrder = 'desc'; saveSortState(); // Sort by newest date
+                refreshUI();
+                alert(`${duplicatedTransactions.length} transaction(s) duplicated successfully.`);
+            } else {
+                alert('Could not duplicate selected transactions.');
+            }
+        });
+
+        // Description Cell Click Handler (uses delegation)
+        transactionTableBody.addEventListener('click', function(event) {
+            const descriptionCell = event.target.closest('.clickable-description');
+            if (!descriptionCell) return; // Click was not on a clickable description cell
+
+            const transactionId = parseInt(descriptionCell.getAttribute('data-id'));
+            const transactionToEdit = transactions.find(t => t.id === transactionId);
+            // console.log(`Clicked description for ID: ${transactionId}. Found transaction:`, transactionToEdit); // Debug log
+
+            if (transactionToEdit) {
+                // Store the ID of the transaction being edited
+                editingTransactionId = transactionId;
+
+                // Populate the edit modal form
+                editTransactionIdInput.value = transactionToEdit.id; // Store ID in hidden input
+                editDateInput.value = transactionToEdit.date;
+                editDescriptionInput.value = transactionToEdit.description;
+                editAmountInput.value = transactionToEdit.amount.toFixed(2); // Set raw value, blur will format it
+                editTypeSelect.value = transactionToEdit.type;
+
+                 // Ensure amount input is formatted correctly on modal load
+                 formatAmountInput(editAmountInput);
+
+                // Show the edit modal
+                editTransactionModal.show();
+            }
+        });
+
+        // "Save Changes" Button Handler in Edit Modal
+        saveEditBtn.addEventListener('click', function() {
+             // Use the stored ID from the hidden input field
+             const idToEdit = parseInt(editTransactionIdInput.value);
+
+             if (isNaN(idToEdit)) {
+                 console.error("Invalid transaction ID stored for editing:", editTransactionIdInput.value);
+                 editTransactionModal.hide();
+                 return;
+             }
+             // console.log(`Saving changes for transaction ID: ${idToEdit}`); // Debug log
+
+
+             const date = editDateInput.value;
+             const description = editDescriptionInput.value;
+             const amount = parseFloat(editAmountInput.value); // Parse formatted input
+             const type = editTypeSelect.value;
+
+             // Basic validation for edited data
+             if (!date || !description || isNaN(amount) || amount < 0 || !type) {
+                 alert('Please fill in all fields in the edit form correctly. Amount must be 0 or greater.');
+                 // Optionally, set amount input back to '0.00' if invalid
+                 if(isNaN(amount) || editAmountInput.value === '') editAmountInput.value = '0.00';
+                 // console.warn("Edit form validation failed."); // Debug log
+                 return; // Stop here if validation fails
+             }
+              // Specific validation for zero expense on edit
+             if (amount === 0 && type === 'expense') {
+                 alert('Expense amount must be greater than zero.');
+                  // console.warn("Edit form validation failed: Zero expense amount."); // Debug log
+                 return;
+             }
+
+             // Find the transaction in the array and update it
+             const transactionIndex = transactions.findIndex(t => t.id === idToEdit);
+             if (transactionIndex > -1) {
+                 // console.log(`Found transaction at index ${transactionIndex}. Updating...`); // Debug log
+                 transactions[transactionIndex].date = date;
+                 transactions[transactionIndex].description = description;
+                 transactions[transactionIndex].amount = amount; // Save the parsed number
+                 transactions[transactionIndex].type = type;
+
+                 saveData(); // Save updated data
+                 refreshUI(); // Re-render to show changes
+                 editTransactionModal.hide(); // Close the modal
+                 // console.log("Transaction updated and saved."); // Debug log
+
+             } else {
+                 console.error("Transaction not found in array for ID:", idToEdit); // Debug log
+                 editTransactionModal.hide();
+             }
+
+             // No need to clear editingTransactionId here, it's read from the hidden input
+        });
+
+
+        themeToggle.addEventListener('click', () => setTheme(document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark'));
+        currencySelect.addEventListener('change', () => { saveCurrency(currencySelect.value); updateCurrencySymbolDisplay(); refreshUI(); });
+
+        downloadCsvBtn.addEventListener('click', function() {
+            if (transactions.length === 0) { alert('No data to download.'); return; }
+            const header = ["Date", "Description", "Amount", "Type"];
+            const csvRows = [header.join(',')];
+            transactions.forEach(t => {
+                const rowData = [t.date, `"${String(t.description).replace(/"/g, '""')}"`, t.amount, String(t.type).toLowerCase()];
+                csvRows.push(rowData.join(','));
+            });
+            const csvContent = csvRows.join('\n');
+            saveAs(new Blob([csvContent], { type: 'text/csv;charset=utf-8;' }), 'bookkeeping.csv');
+        });
+
+        downloadXlsxBtn.addEventListener('click', function() {
+            if (transactions.length === 0) { alert('No data to download.'); return; }
+            const data = transactions.map(t => ({ Date: t.date, Description: t.description, Amount: t.amount, Type: t.type }));
+            const ws = XLSX.utils.json_to_sheet(data);
+            const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Bookkeeping");
+            XLSX.writeFile(wb, "bookkeeping.xlsx");
+        });
+
+        uploadFile.addEventListener('change', handleFileUpload);
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const data = new Uint8Array(e.target.result);
+                let workbook;
+                try {
+                    workbook = XLSX.read(data, { type: 'array', cellDates: true }); // Use cellDates: true
+                } catch (error) {
+                    importStatusBody.textContent = 'Error reading file. Ensure it is a valid CSV or XLSX.';
+                    importStatusModal.show();
+                    console.error('File read error:', error); uploadFile.value = ''; return;
+                }
+
+                const firstSheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[firstSheetName];
+                let jsonData;
+                try {
+                    jsonData = XLSX.utils.sheet_to_json(worksheet, {
+                        header: 1,       // Get rows as arrays
+                        defval: null,    // Use null for empty cells
+                        blankrows: false // Skip truly blank rows
+                    });
+                } catch (error) {
+                    importStatusBody.textContent = 'Error parsing file data.';
+                    importStatusModal.show();
+                    console.error('Sheet parse error:', error); uploadFile.value = ''; return;
+                }
+
+                if (!jsonData || jsonData.length <= 1) { // jsonData[0] is header
+                    importStatusBody.textContent = 'File is empty or contains only headers.';
+                    importStatusModal.show();
+                    uploadFile.value = ''; return;
+                }
+
+                const expectedHeaders = ['Date', 'Description', 'Amount', 'Type'];
+                const actualHeaders = jsonData[0].map(h => String(h || '').trim()); // Ensure headers are strings & trimmed
+
+                const headerMap = {};
+                let isValidHeader = true;
+                expectedHeaders.forEach(expected => {
+                    const foundIndex = actualHeaders.findIndex(actual => actual.toLowerCase() === expected.toLowerCase());
+                    if (foundIndex === -1) {
+                        isValidHeader = false;
+                        console.error(`Missing expected header: ${expected}`);
+                    } else {
+                        headerMap[expected] = foundIndex;
+                    }
+                });
+
+                if (!isValidHeader) {
+                    importStatusBody.textContent = 'File headers are incorrect. Please refer to the "Upload Help" guide.';
+                    importStatusModal.show();
+                    uploadFile.value = ''; return;
+                }
+
+                const importedTransactions = [];
+                const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+                for (let i = 1; i < jsonData.length; i++) { // Start from 1 to skip header row
+                    const row = jsonData[i];
+                    if (!row || row.every(cell => cell == null || String(cell).trim() === '')) {
+                        console.warn(`Skipping empty or effectively empty row ${i + 1}.`);
+                        continue;
+                    }
+
+                    const dateVal = row[headerMap['Date']];
+                    const descriptionVal = row[headerMap['Description']];
+                    const amountVal = row[headerMap['Amount']];
+                    const typeVal = row[headerMap['Type']];
+
+                    let parsedDate = null;
+                    let parsedAmount = NaN;
+                    let parsedType = '';
+                    let isValidRow = true;
+                    let rowErrors = [];
+
+                    // 1. Date Validation
+                    if (dateVal instanceof Date) {
+                        if (isNaN(dateVal.getTime())) {
+                            isValidRow = false; rowErrors.push(`Invalid Date object.`);
+                        } else {
+                            parsedDate = dateVal.toISOString().split('T')[0];
+                        }
+                    } else if (typeof dateVal === 'string' && dateVal.trim() !== '') {
+                        const trimmedDate = dateVal.trim();
+                        if (dateRegex.test(trimmedDate)) parsedDate = trimmedDate;
+                        else { isValidRow = false; rowErrors.push(`Date "${trimmedDate}" not YYYY-MM-DD.`); }
+                    } else if (typeof dateVal === 'number') { // Excel serial date
+                        try {
+                            const d = XLSX.SSF.parse_date_code(dateVal);
+                            if (d) parsedDate = `${d.y}-${String(d.m).padStart(2, '0')}-${String(d.d).padStart(2, '0')}`;
+                            else { isValidRow = false; rowErrors.push(`Cannot parse Excel date num ${dateVal}.`); }
+                            if (parsedDate && !dateRegex.test(parsedDate)) { isValidRow = false; rowErrors.push(`Converted Excel date "${parsedDate}" invalid.`); }
+                        } catch (e) { isValidRow = false; rowErrors.push(`Error parsing Excel date num: ${e.message}`);}
+                    } else {
+                        isValidRow = false; rowErrors.push(`Date missing or invalid type.`);
+                    }
+
+                    // 2. Description Validation
+                    const trimmedDescription = String(descriptionVal || '').trim();
+                    if (trimmedDescription === '') { isValidRow = false; rowErrors.push(`Description missing.`); }
+
+                    // 3. Amount Validation
+                    const numericAmount = parseFloat(amountVal);
+                    if (isNaN(numericAmount) || numericAmount < 0) {
+                        isValidRow = false; rowErrors.push(`Amount "${amountVal}" invalid or < 0.`);
+                    } else {
+                        parsedAmount = numericAmount;
+                    }
+
+                    // 4. Type Validation
+                    const lowerType = String(typeVal || '').trim().toLowerCase();
+                    if (lowerType !== 'income' && lowerType !== 'expense') {
+                        isValidRow = false; rowErrors.push(`Type "${typeVal}" invalid.`);
+                    } else {
+                        parsedType = lowerType;
+                    }
+
+                    if (isValidRow) {
+                        importedTransactions.push({ id: Date.now() + i, date: parsedDate, description: trimmedDescription, amount: parsedAmount, type: parsedType });
+                    } else {
+                        console.warn(`Row ${i + 1} skipped: ${rowErrors.join('; ')}. Data:`, row);
+                    }
+                }
+
+                if (importedTransactions.length > 0) {
+                    transactions = transactions.concat(importedTransactions);
+                    saveData(); currentSortColumn = 'date'; currentSortOrder = 'desc'; saveSortState();
+                    refreshUI();
+                    importStatusBody.textContent = `${importedTransactions.length} transactions imported successfully.`;
+                } else {
+                    importStatusBody.textContent = 'No valid transactions found to import. Check console (F12) for details on skipped rows & refer to "Upload Help".';
+                }
+                importStatusModal.show(); // Show the modal for both success and failure messages
+                uploadFile.value = '';
+            };
+            reader.onerror = (e) => {
+                importStatusBody.textContent = 'Error reading file.';
+                importStatusModal.show();
+                console.error('FileReader error:', e);
+                uploadFile.value = '';
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        // --- Initialization ---
+        function init() {
+            loadTheme(); loadCurrency(); loadSortState(); loadData(); refreshUI();
+            document.getElementById('date').valueAsDate = new Date();
+            amountInput.value = '0.00';
+        }
+        init();
+    </script>
 </body>
 </html>
